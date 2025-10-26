@@ -1,0 +1,17 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/data#> .
+
+# Electric Vehicle Dataset
+ex:EVDataset a dcat:Dataset ;
+    dcterms:title "Electric Vehicle Population Data"@en ;
+    dcterms:description "Dataset containing information about electric vehicles"@en ;
+    dcterms:issued "2025-10-26"^^xsd:date ;
+    dcat:distribution ex:EVDistribution .
+
+ex:EVDistribution a dcat:Distribution ;
+    dcat:accessURL <http://example.org/data/electric_vehicle_population_data.csv> ;
+    dcterms:format "text/csv" .

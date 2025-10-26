@@ -1,0 +1,6 @@
+VIN,County,City,State,Postal Code,Model Year,Make,Model,Electric Vehicle Type,Clean Alternative Fuel Vehicle (CAFV) Eligibility,Electric Range,Base MSRP,Legislative District,DOL Vehicle ID,Vehicle Location,Electric Utility,2020 Census Tract
+5YJSA1E26HF000001,King,Seattle,WA,98101,2017,TESLA,MODEL S,Battery Electric Vehicle (BEV),Clean Alternative Fuel Vehicle Eligible,210,0,43,123456789,POINT (-122.3321 47.6062),SEATTLE CITY LIGHT,53033005101
+1N4AZ0CP9FC000002,Snohomish,Everett,WA,98201,2015,NISSAN,LEAF,Battery Electric Vehicle (BEV),Clean Alternative Fuel Vehicle Eligible,84,0,38,987654321,POINT (-122.2015 47.9790),PUGET SOUND ENERGY INC,53061051500
+5YJ3E1EA4JF000003,Pierce,Tacoma,WA,98402,2018,TESLA,MODEL 3,Battery Electric Vehicle (BEV),Clean Alternative Fuel Vehicle Eligible,310,0,27,456789123,POINT (-122.4443 47.2529),TACOMA PUBLIC UTILITIES,53053011100
+JTDKARFP2H3000004,Clark,Vancouver,WA,98660,2017,TOYOTA,PRIUS PRIME,Plug-in Hybrid Electric Vehicle (PHEV),Not eligible due to low battery range,25,0,49,789123456,POINT (-122.6615 45.6387),CLARK PUBLIC UTILITIES,53011041301
+3MW39FS05LR000005,Thurston,Olympia,WA,98501,2020,BMW,330E,Plug-in Hybrid Electric Vehicle (PHEV),Clean Alternative Fuel Vehicle Eligible,22,0,22,321654987,POINT (-122.9007 47.0379),PUGET SOUND ENERGY INC,53067010500

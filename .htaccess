@@ -1,0 +1,13 @@
+# Apache configuration file for FAIR data repository
+# Access control and security settings
+
+# Enable CORS for data access
+Header set Access-Control-Allow-Origin "*"
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Enable content negotiation for RDF data
+AddType application/rdf+xml .rdf .owl .owx
+AddType text/turtle .ttl
+AddType text/csv .csv
