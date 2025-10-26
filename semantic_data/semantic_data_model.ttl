@@ -1,0 +1,38 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex: <http://example.org/semantic#> .
+
+# Semantic Data Model for Electric Vehicle Dataset
+ex:SemanticDataModel a owl:Ontology ;
+    dcterms:title "Electric Vehicle Semantic Data Model"@en ;
+    dcterms:description "Semantic model describing the structure and relationships of electric vehicle data"@en ;
+    dcterms:created "2025-10-26"^^xsd:date .
+
+# Classes
+ex:ElectricVehicle a owl:Class ;
+    rdfs:label "Electric Vehicle"@en ;
+    rdfs:comment "A vehicle powered by electricity"@en .
+
+ex:Location a owl:Class ;
+    rdfs:label "Location"@en ;
+    rdfs:comment "Geographic location information"@en .
+
+# Properties
+ex:hasVIN a owl:DatatypeProperty ;
+    rdfs:label "has VIN"@en ;
+    rdfs:domain ex:ElectricVehicle ;
+    rdfs:range xsd:string .
+
+ex:hasModelYear a owl:DatatypeProperty ;
+    rdfs:label "has model year"@en ;
+    rdfs:domain ex:ElectricVehicle ;
+    rdfs:range xsd:integer .
+
+ex:hasLocation a owl:ObjectProperty ;
+    rdfs:label "has location"@en ;
+    rdfs:domain ex:ElectricVehicle ;
+    rdfs:range ex:Location .
