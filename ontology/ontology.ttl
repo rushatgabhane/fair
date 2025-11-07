@@ -1,0 +1,166 @@
+@prefix ev:    <https://example.org/ev/ontology#> .
+@prefix ex:    <https://example.org/ev/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix sdo:   <https://schema.org/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix qudt:  <http://qudt.org/schema/qudt/> .
+@prefix unit:  <http://qudt.org/vocab/unit/> .
+@prefix geo:   <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+<https://example.org/ev/ontology>
+    a owl:Ontology ;
+    dct:title "Electric Vehicle Registration Ontology — 2014 Subset" ;
+    dct:creator "Your Name or Org" ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:modified "2025-11-06"^^xsd:date ;
+    owl:versionInfo "0.2.0" ;
+    rdfs:comment "Lightweight domain ontology for EV registration data, tailored to a subset where all vehicles have model year = 2014. Columns 'Base MSRP' and 'Legislative District' are intentionally omitted." .
+
+#################################################################
+# Classes
+#################################################################
+
+ev:ElectricVehicle a owl:Class ;
+    rdfs:subClassOf sdo:Vehicle ;
+    rdfs:label "Electric Vehicle"@en ;
+    rdfs:comment "A registered electric vehicle (battery electric or plug-in hybrid)."@en .
+
+ev:Make a owl:Class ;
+    rdfs:label "Make"@en ;
+    rdfs:comment "Manufacturer of a vehicle (e.g., NISSAN, TESLA)."@en .
+
+ev:Model a owl:Class ;
+    rdfs:label "Model"@en ;
+    rdfs:comment "Model designation of a vehicle (e.g., LEAF, MODEL 3)."@en .
+
+ev:UtilityProvider a owl:Class ;
+    rdfs:label "Utility Provider"@en ;
+    rdfs:comment "Electric utility that serves the registration location or vehicle owner."@en .
+
+ev:AdministrativeArea a owl:Class ;
+    rdfs:label "Administrative Area"@en ;
+    rdfs:comment "Generic administrative unit such as county or city."@en .
+
+ev:County a owl:Class ;
+    rdfs:subClassOf ev:AdministrativeArea ;
+    rdfs:label "County"@en .
+
+ev:City a owl:Class ;
+    rdfs:subClassOf ev:AdministrativeArea ;
+    rdfs:label "City"@en .
+
+ev:CensusTract a owl:Class ;
+    rdfs:label "Census Tract"@en ;
+    rdfs:comment "A US Census Tract identified by 11-digit GEOID (2020)."@en .
+
+ev:EligibilityStatus a owl:Class ;
+    rdfs:label "CAFV Eligibility Status"@en ;
+    rdfs:comment "Status values for Clean Alternative Fuel Vehicle (CAFV) eligibility."@en ;
+    rdfs:subClassOf skos:Concept .
+
+#################################################################
+# Object Properties
+#################################################################
+
+ev:hasMake a owl:ObjectProperty ;
+    rdfs:label "has make"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range ev:Make .
+
+ev:hasModel a owl:ObjectProperty ;
+    rdfs:label "has model"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range ev:Model .
+
+ev:servedByUtility a owl:ObjectProperty ;
+    rdfs:label "served by utility"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range ev:UtilityProvider .
+
+ev:registeredIn a owl:ObjectProperty ;
+    rdfs:label "registered in"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range ev:AdministrativeArea .
+
+ev:inCensusTract a owl:ObjectProperty ;
+    rdfs:label "in census tract"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range ev:CensusTract .
+
+ev:hasEligibility a owl:ObjectProperty ;
+    rdfs:label "has eligibility"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range ev:EligibilityStatus .
+
+#################################################################
+# Data Properties
+#################################################################
+
+ev:postalCode a owl:DatatypeProperty ;
+    rdfs:label "postal code"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range xsd:string .
+
+ev:electricRange a owl:DatatypeProperty ;
+    rdfs:label "electric range (miles)"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "Range value; use qudt:unit unit:Mile where applicable."@en .
+
+ev:modelYear a owl:DatatypeProperty ;
+    rdfs:label "model year"@en ;
+    rdfs:domain ev:ElectricVehicle ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Model year as an integer; this subset is fixed to 2014."@en .
+
+ev:modelName a owl:DatatypeProperty ;
+    rdfs:label "model name (text)"@en ;
+    rdfs:domain ev:Model ;
+    rdfs:range xsd:string .
+
+#################################################################
+# SKOS ConceptSchemes and Concepts
+#################################################################
+
+<https://example.org/ev/VehicleTypeScheme> a skos:ConceptScheme ;
+    rdfs:label "Vehicle Type Scheme"@en .
+
+<https://example.org/ev/VehicleType/BEV> a skos:Concept ;
+    skos:inScheme <https://example.org/ev/VehicleTypeScheme> ;
+    skos:prefLabel "Battery Electric Vehicle (BEV)"@en .
+
+<https://example.org/ev/VehicleType/PHEV> a skos:Concept ;
+    skos:inScheme <https://example.org/ev/VehicleTypeScheme> ;
+    skos:prefLabel "Plug-in Hybrid Electric Vehicle (PHEV)"@en .
+
+<https://example.org/ev/CAFVEligibilityScheme> a skos:ConceptScheme ;
+    rdfs:label "CAFV Eligibility Scheme"@en .
+
+<https://example.org/ev/CAFVStatus/Eligible> a ev:EligibilityStatus ;
+    skos:inScheme <https://example.org/ev/CAFVEligibilityScheme> ;
+    skos:prefLabel "Clean Alternative Fuel Vehicle Eligible"@en .
+
+<https://example.org/ev/CAFVStatus/NotEligible> a ev:EligibilityStatus ;
+    skos:inScheme <https://example.org/ev/CAFVEligibilityScheme> ;
+    skos:prefLabel "Not Eligible"@en .
+
+<https://example.org/ev/CAFVStatus/Unknown> a ev:EligibilityStatus ;
+    skos:inScheme <https://example.org/ev/CAFVEligibilityScheme> ;
+    skos:prefLabel "Unknown"@en .
+
+#################################################################
+# Example reference individuals (optional)
+#################################################################
+
+<https://example.org/ev/make/NISSAN> a ev:Make ; rdfs:label "NISSAN"@en .
+<https://example.org/ev/model/LEAF> a ev:Model ; rdfs:label "LEAF"@en .
+<https://example.org/ev/utility/PUGET_SOUND_ENERGY_INC> a ev:UtilityProvider ; rdfs:label "PUGET SOUND ENERGY INC"@en .
+<https://example.org/ev/county/kitsap> a ev:County ; rdfs:label "Kitsap County"@en .
+<https://example.org/ev/city/bainbridge_island> a ev:City ; rdfs:label "Bainbridge Island"@en .
+<https://example.org/ev/tract/53035091001> a ev:CensusTract ; dct:identifier "53035091001" .

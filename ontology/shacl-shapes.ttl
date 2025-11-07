@@ -1,0 +1,102 @@
+@prefix ev:    <https://example.org/ev/ontology#> .
+@prefix ex:    <https://example.org/ev/> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Vehicle shape for the 2014-only subset (no Base MSRP, no Legislative District)
+
+ex:VehicleShape2014 a sh:NodeShape ;
+  sh:targetClass ev:ElectricVehicle ;
+
+  # Make
+  sh:property [
+    sh:path ev:hasMake ;
+    sh:minCount 1 ;
+    sh:message "Every EV must have a make."@en ;
+  ] ;
+
+  # Model
+  sh:property [
+    sh:path ev:hasModel ;
+    sh:minCount 1 ;
+    sh:message "Every EV must have a model."@en ;
+  ] ;
+
+  # Range (optional but if present must be non-negative decimal)
+  sh:property [
+    sh:path ev:electricRange ;
+    sh:datatype xsd:decimal ;
+    sh:minInclusive 0 ;
+    sh:message "Electric range must be a non-negative decimal when provided."@en ;
+  ] ;
+
+  # Model Year (MUST be exactly 2014 as an integer)
+  sh:property [
+    sh:path ev:modelYear ;
+    sh:datatype xsd:integer ;
+    sh:hasValue 2014 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "Model year must be present and equal to 2014."@en ;
+  ] ;
+
+  # Registration location
+  sh:property [
+    sh:path ev:registeredIn ;
+    sh:class ev:AdministrativeArea ;
+    sh:minCount 1 ;
+    sh:message "Vehicle must be registered in a county or city."@en ;
+  ] ;
+
+  # Census tract (optional but recommended)
+  sh:property [
+    sh:path ev:inCensusTract ;
+    sh:class ev:CensusTract ;
+    sh:maxCount 1 ;
+    sh:message "If provided, census tract must be a CensusTract individual."@en ;
+  ] ;
+
+  # Postal code (US ZIP 5 or ZIP+4 pattern)
+  sh:property [
+    sh:path ev:postalCode ;
+    sh:pattern "^\d{5}(-\d{4})?$" ;
+    sh:message "Postal code must be a 5-digit ZIP or ZIP+4."@en ;
+  ] ;
+
+  # Utility provider (optional)
+  sh:property [
+    sh:path ev:servedByUtility ;
+    sh:class ev:UtilityProvider ;
+    sh:maxCount 1 ;
+    sh:message "If provided, utility should be a UtilityProvider."@en ;
+  ] .
+
+# Shapes for areas and tracts
+
+ex:CountyShape a sh:NodeShape ;
+  sh:targetClass ev:County ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:minCount 1 ;
+    sh:message "County must have a label."@en ;
+  ] .
+
+ex:CityShape a sh:NodeShape ;
+  sh:targetClass ev:City ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:minCount 1 ;
+    sh:message "City must have a label."@en ;
+  ] .
+
+ex:CensusTractShape a sh:NodeShape ;
+  sh:targetClass ev:CensusTract ;
+  sh:property [
+    sh:path dct:identifier ;
+    sh:pattern "^\d{11}$" ;
+    sh:minCount 1 ;
+    sh:message "Census tract GEOID must be 11 digits (2020 format)."@en ;
+  ] .
