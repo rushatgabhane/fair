@@ -1,76 +1,119 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-@prefix ex: <http://example.org/resource#> .
+@prefix org:   <http://www.w3.org/ns/org#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix :      <https://w3id.org/FAIR-course-UT/2025-2026/group3/> .
 
-# Dataset Metadata following FAIR principles
-ex:EVDataCatalog a dcat:Catalog ;
-    dcterms:title "Electric Vehicle Data Catalog"@en ;
-    dcterms:description "A FAIR catalog of electric vehicle population data and related resources"@en ;
-    dcterms:publisher ex:Publisher ;
-    dcterms:issued "2025-10-26"^^xsd:date ;
-    dcterms:modified "2025-10-26"^^xsd:date ;
-    dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en> ;
-    dcat:dataset ex:ElectricVehicleDataset .
+#################################################################
+# Catalog
+#################################################################
 
-ex:Publisher a foaf:Organization ;
-    foaf:name "Example Organization"@en ;
-    vcard:hasEmail <mailto:contact@example.org> .
+:dataCatalog a dcat:Catalog ;
+    dct:title "Group 3 FAIR Course Data Catalog" ;
+    dct:description "A catalog of FAIRified datasets produced for the FAIR course at the University of Twente (2025–2026)." ;
+    dct:creator :group3Team ;
+    dcat:dataset :dataSet .
 
-ex:ElectricVehicleDataset a dcat:Dataset ;
-    dcterms:identifier "ev-population-2025" ;
-    dcterms:title "Electric Vehicle Population Data"@en ;
-    dcterms:description "Comprehensive dataset containing electric vehicle registration and population information"@en ;
-    dcterms:creator ex:Creator ;
-    dcterms:publisher ex:Publisher ;
-    dcterms:issued "2025-10-26"^^xsd:date ;
-    dcterms:modified "2025-10-26"^^xsd:date ;
-    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:spatial ex:SpatialCoverage ;
-    dcterms:temporal ex:TemporalCoverage ;
-    dcat:keyword "electric vehicles"@en, "transportation"@en, "sustainability"@en ;
-    dcat:theme <http://eurovoc.europa.eu/4038> ;
-    dcat:distribution ex:CSVDistribution, ex:RDFDistribution .
+#################################################################
+# FAIRified Dataset (derived from original WA EV dataset)
+#################################################################
 
-ex:Creator a foaf:Person ;
-    foaf:name "Data Curator"@en ;
-    vcard:hasEmail <mailto:curator@example.org> .
+:dataSet a dcat:Dataset ;
+    dct:title "Washington State Registered Electric Vehicles (FAIRified)" ;
+    dct:description "Dataset of registered electric vehicles in Washington State with semantic annotations following DCAT, QUDT, and GeoSPARQL standards." ;
+    dct:source <https://data.wa.gov/api/views/f6w7-q2d2> ;
+    prov:wasDerivedFrom <https://data.wa.gov/d/f6w7-q2d2> ;
+    dct:creator :group3Team ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:created "2025-10-21"^^xsd:date ;
+    dct:issued "2023-10-19"^^xsd:date ;
+    dct:modified "2025-09-16"^^xsd:date ;
+    dcat:keyword "hybrids", "dol_open_data", "electric", "energy", "environment", "ev",
+        "volt", "vehicles", "vehicle", "tesla", "bev", "phev" ;
+    dcat:theme <http://eurovoc.europa.eu/100277>, "Transportation" ;
+    dcat:landingPage <https://data.wa.gov/d/f6w7-q2d2> ;
+    dct:publisher [ a org:Organization ; foaf:name "data.wa.gov" ] ;
+    dcat:contactPoint [ a vcard:Kind, vcard:Organization ; vcard:fn "Department of Licensing" ;
+                       vcard:hasEmail <mailto:no-reply@data.wa.gov> ] ;
+    dcat:distribution :csvDistribution, :rdfDistribution, :jsonDistribution, :xmlDistribution,
+                      :ttlDistribution, :ontologyDistribution, :shapesDistribution ;
+    dct:conformsTo <https://w3id.org/FAIR-course-UT/2025-2026/group3/ev-ontology-2014>,
+                   <https://w3id.org/FAIR-course-UT/2025-2026/group3/ev-shapes-2014> .
 
-ex:SpatialCoverage a dcterms:Location ;
-    dcterms:identifier "Washington State, USA" ;
-    rdfs:label "Washington State"@en .
+#################################################################
+# Distributions
+#################################################################
 
-ex:TemporalCoverage a dcterms:PeriodOfTime ;
-    dcat:startDate "2015-01-01"^^xsd:date ;
-    dcat:endDate "2025-10-26"^^xsd:date .
+:csvDistribution a dcat:Distribution ;
+    dct:title "Original EV dataset (CSV)" ;
+    dcat:downloadURL <https://data.wa.gov/api/views/f6w7-q2d2/rows.csv?accessType=DOWNLOAD> ;
+    dct:format "text/csv" .
 
-ex:CSVDistribution a dcat:Distribution ;
-    dcterms:title "Electric Vehicle Data - CSV Format"@en ;
-    dcterms:description "Electric vehicle data in CSV format"@en ;
-    dcterms:format "text/csv" ;
-    dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv> ;
-    dcat:accessURL <http://example.org/data/electric_vehicle_population_data.csv> ;
-    dcterms:license <http://creativecommons.org/licenses/by/4.0/> .
+:rdfDistribution a dcat:Distribution ;
+    dct:title "Original EV dataset (RDF/XML)" ;
+    dcat:downloadURL <https://data.wa.gov/api/views/f6w7-q2d2/rows.rdf?accessType=DOWNLOAD> ;
+    dcat:accessURL <https://data.wa.gov/api/views/f6w7-q2d2/columns.rdf> ;
+    dct:format "application/rdf+xml" .
 
-ex:RDFDistribution a dcat:Distribution ;
-    dcterms:title "Electric Vehicle Data - RDF/Turtle Format"@en ;
-    dcterms:description "Electric vehicle data in RDF Turtle format"@en ;
-    dcterms:format "text/turtle" ;
-    dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle> ;
-    dcat:accessURL <http://example.org/data/data.ttl> ;
-    dcterms:license <http://creativecommons.org/licenses/by/4.0/> .
+:jsonDistribution a dcat:Distribution ;
+    dct:title "Original EV dataset (JSON)" ;
+    dcat:downloadURL <https://data.wa.gov/api/views/f6w7-q2d2/rows.json?accessType=DOWNLOAD> ;
+    dcat:accessURL <https://data.wa.gov/api/views/f6w7-q2d2/columns.json> ;
+    dct:format "application/json" .
 
-# FAIR Principles Documentation
-ex:FAIRMetadata a rdf:Description ;
-    dcterms:title "FAIR Compliance Documentation"@en ;
-    rdfs:comment """
-    This dataset follows FAIR principles:
-    - Findable: Unique identifiers (DOI), rich metadata, indexed in searchable catalogs
-    - Accessible: Open access via standard protocols (HTTP), clear license information
-    - Interoperable: Uses standard vocabularies (DCAT, Dublin Core), multiple formats
-    - Reusable: Detailed provenance, clear licensing (CC-BY-4.0), well-documented structure
-    """@en .
+:xmlDistribution a dcat:Distribution ;
+    dct:title "Original EV dataset (XML)" ;
+    dcat:downloadURL <https://data.wa.gov/api/views/f6w7-q2d2/rows.xml?accessType=DOWNLOAD> ;
+    dcat:accessURL <https://data.wa.gov/api/views/f6w7-q2d2/columns.xml> ;
+    dct:format "application/xml" .
+
+:ttlDistribution a dcat:Distribution ;
+    dct:title "FAIRified EV dataset (RDF/Turtle)" ;
+    dct:description "RDF representation of the FAIRified Washington State EV dataset using the EV ontology." ;
+    dct:format "text/turtle" ;
+    dcat:accessURL <https://w3id.org/FAIR-course-UT/2025-2026/group3/data> ;
+    dcat:downloadURL <https://w3id.org/FAIR-course-UT/2025-2026/group3/data.ttl> .
+
+:ontologyDistribution a dcat:Distribution ;
+    dct:title "EV Ontology (2014 subset)" ;
+    dct:description "Ontology defining classes and properties used to model the FAIRified Washington EV dataset." ;
+    dct:format "text/turtle" ;
+    dcat:accessURL <https://w3id.org/FAIR-course-UT/2025-2026/group3/ev-ontology-2014> ;
+    dcat:downloadURL <https://w3id.org/FAIR-course-UT/2025-2026/group3/ev-ontology-2014.ttl> .
+
+:shapesDistribution a dcat:Distribution ;
+    dct:title "EV SHACL Shapes (2014 subset)" ;
+    dct:description "SHACL shapes used to validate the FAIRified Washington EV dataset against the EV ontology." ;
+    dct:format "text/turtle" ;
+    dcat:accessURL <https://w3id.org/FAIR-course-UT/2025-2026/group3/ev-shapes-2014> ;
+    dcat:downloadURL <https://w3id.org/FAIR-course-UT/2025-2026/group3/ev-shapes-2014.ttl> .
+
+#################################################################
+# Ontology & SHACL
+#################################################################
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group3/ev-ontology-2014>
+    a owl:Ontology ;
+    dct:title "EV Ontology for Washington State Registered EVs (2014 subset)" ;
+    dct:creator :group3Team ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    owl:versionInfo "0.2.0" .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group3/ev-shapes-2014>
+    a sh:NodeShape ;
+    dct:title "SHACL Shapes for FAIRified Washington EV Dataset (2014 subset)" ;
+    dct:creator :group3Team ;
+    dct:description "Validation shapes ensuring that resources using the EV ontology follow the required structure and constraints." .
+
+#################################################################
+# Agent
+#################################################################
+
+:group3Team a foaf:Agent ;
+    foaf:name "FAIR Course Group 3 (2025–2026)" ;
+    foaf:mbox <mailto:group3@faircourse.ut.ee> .
