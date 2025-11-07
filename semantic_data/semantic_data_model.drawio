@@ -1,20 +1,116 @@
-<mxfile host="app.diagrams.net" modified="2025-10-26T12:00:00.000Z" agent="5.0" version="21.0.0" etag="dummy" type="device">
-  <diagram name="Electric Vehicle Semantic Model" id="semantic-model">
-    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="28.2.8">
+  <diagram name="EV Semantic Model" id="88-bPBiptlJacgjtMoBG">
+    <mxGraphModel dx="1273" dy="866" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="2" value="Electric Vehicle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="300" y="200" width="120" height="60" as="geometry" />
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-19" value="&lt;b&gt;ev:RegisteredVehicle&lt;/b&gt;&lt;br&gt;(Main Class)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CC4444;strokeColor=#A02222;fontSize=16;fontColor=#FFFFFF;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="800" y="400" width="200" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="3" value="Location" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="500" y="200" width="120" height="60" as="geometry" />
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-20" value="&lt;b&gt;dct:identifier&lt;/b&gt;&lt;br&gt;VIN&lt;br&gt;(L: vin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9966;strokeColor=#E67733;fontSize=12;fontColor=#FFFFFF;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="300" width="160" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="4" value="hasLocation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="3">
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-21" value="&lt;b&gt;schema:serialNumber&lt;/b&gt;&lt;br&gt;Vehicle ID&lt;br&gt;(L: vehicleID)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9966;strokeColor=#E67733;fontSize=12;fontColor=#FFFFFF;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="390" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-22" value="&lt;b&gt;ev:ElectricVehicleType&lt;/b&gt;&lt;br&gt;R: electricVehicleType&lt;br&gt;• BEV&lt;br&gt;• PHEV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4499AA;strokeColor=#2277AA;fontSize=12;fontColor=#FFFFFF;shadow=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="300" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-23" value="&lt;b&gt;schema:brand&lt;/b&gt;&lt;br&gt;R: make&lt;br&gt;(Nissan, BMW, FORD)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="420" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-24" value="&lt;b&gt;schema:model&lt;/b&gt;&lt;br&gt;R: model&lt;br&gt;(LEAF, i3, Ford Fusion)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="510" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-25" value="&lt;b&gt;schema:vehicleModelDate&lt;/b&gt;&lt;br&gt;L: modelYear&lt;br&gt;(xsd:gYear)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#AADDFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1300" y="510" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-26" value="&lt;b&gt;ev:electricRange&lt;/b&gt;&lt;br&gt;qudt:QuantityValue&lt;br&gt;L: electricRange (numeric)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="610" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-27" value="&lt;b&gt;qudt:unit&lt;/b&gt;&lt;br&gt;R: KM&lt;br&gt;(Kilometers)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCC99;strokeColor=#FF9933;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1300" y="620" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-28" value="&lt;b&gt;ev:cafvEligibility&lt;/b&gt;&lt;br&gt;L: cafvEligibility&lt;br&gt;• Eligible&lt;br&gt;• Not eligible" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="720" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-29" value="&lt;b&gt;schema:addressLocality&lt;/b&gt;&lt;br&gt;dct:spatial&lt;br&gt;R: city, R: county" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="510" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-30" value="&lt;b&gt;schema:addressRegion&lt;/b&gt;&lt;br&gt;L: state&lt;br&gt;(Washington)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="610" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-31" value="&lt;b&gt;schema:postalCode&lt;/b&gt;&lt;br&gt;L: postalCode&lt;br&gt;(ZIP code)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="700" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-32" value="&lt;b&gt;geo:Geometry&lt;/b&gt;&lt;br&gt;geo:asWKT&lt;br&gt;B: Blank&lt;br&gt;POINT (long lat)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="520" y="790" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-33" value="&lt;b&gt;ev:censusTractGeoID&lt;/b&gt;&lt;br&gt;L: censusTract2020&lt;br&gt;(Census Tract ID)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="890" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-34" value="&lt;b&gt;ev:electricUtility&lt;/b&gt;&lt;br&gt;L: electricUtility&lt;br&gt;(Utility provider)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;strokeColor=#3399CC;fontSize=11;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="980" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-35" value="dct:identifier" style="endArrow=classic;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-20" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="420" as="sourcePoint" />
+            <mxPoint x="680" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-36" value="schema:serialNumber" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5" value="VIN: string&#xa;Model Year: integer&#xa;Make: string&#xa;Model: string&#xa;Type: string" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="280" y="280" width="160" height="100" as="geometry" />
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-37" value="rdf:type / dct:type" style="endArrow=classic;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-38" value="schema:brand" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-39" value="schema:model" style="endArrow=classic;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-40" value="schema:vehicleModelDate" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;dashed=1;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-24" target="JIRi7AwlKJ2WvcJePQ6g-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-41" value="ev:electricRange" style="endArrow=classic;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-42" value="qudt:unit" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;dashed=1;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-26" target="JIRi7AwlKJ2WvcJePQ6g-27" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-43" value="ev:cafvEligibility" style="endArrow=classic;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-44" value="schema:addressLocality" style="endArrow=classic;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-45" value="schema:addressRegion" style="endArrow=classic;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-30" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-46" value="schema:postalCode" style="endArrow=classic;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-31" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-47" value="geo:hasGeometry" style="endArrow=classic;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-48" value="ev:censusTractGeoID" style="endArrow=classic;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-33" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-49" value="ev:electricUtility" style="endArrow=classic;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=10;" parent="1" source="JIRi7AwlKJ2WvcJePQ6g-19" target="JIRi7AwlKJ2WvcJePQ6g-34" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-58" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#CCCCCC;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="840" width="380" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-59" value="&lt;b&gt;Namespaces&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1120" y="850" width="150" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-60" value="&lt;b&gt;ev:&lt;/b&gt; Electric Vehicle vocabulary&lt;br&gt;&lt;b&gt;schema:&lt;/b&gt; http://schema.org/&lt;br&gt;&lt;b&gt;dct:&lt;/b&gt; Dublin Core Terms&lt;br&gt;&lt;b&gt;geo:&lt;/b&gt; GeoSPARQL ontology&lt;br&gt;&lt;b&gt;qudt:&lt;/b&gt; Units ontology&lt;br&gt;&lt;b&gt;rdf:&lt;/b&gt; RDF vocabulary&lt;br&gt;&lt;b&gt;xsd:&lt;/b&gt; XML Schema datatypes" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;spacing=4;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="880" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="JIRi7AwlKJ2WvcJePQ6g-61" value="&lt;b&gt;Base IRI:&lt;/b&gt; https://w3id.org/FAIR-course-UT/2025-2026/group3/data#" style="text;html=1;strokeColor=none;fillColor=#E3F2FD;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="520" y="1070" width="740" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
